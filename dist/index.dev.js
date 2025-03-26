@@ -91,7 +91,7 @@ app.post("/messages", function _callee3(req, res) {
           return _context3.abrupt("return");
 
         case 5:
-          console.log("New POST message: ".concat(req));
+          console.log("New POST message: ".concat(JSON.stringify(req)));
           _context3.next = 8;
           return regeneratorRuntime.awrap(session.transport.handlePostMessage(req, res));
 
