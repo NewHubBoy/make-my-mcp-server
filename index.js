@@ -32,6 +32,7 @@ const sessions = {}
 app.get("/sse", async (req, res) => {
     console.log(`New SSE connection from ${req.ip}`);
     const sseTransport = new SSEServerTransport("/messages", res);
+    
     const sessionId = sseTransport.sessionId;
     if (sessionId) {
         sessions[sessionId] = { transport: sseTransport, response: res }
@@ -46,7 +47,7 @@ app.post("/messages", async (req, res) => {
         res.status(404).send("Session not found");
         return;
     }
-    console.log(`New POST message: ${req.body}`);
+    console.log(`New POST message: ${req}`);
     await session.transport.handlePostMessage(req, res);
 });
 
