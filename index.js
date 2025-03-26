@@ -46,7 +46,7 @@ app.post("/messages", async (req, res) => {
         res.status(404).send("Session not found");
         return;
     }
-
+    console.log(`New POST message: ${req.body}`);
     await session.transport.handlePostMessage(req, res);
 });
 
